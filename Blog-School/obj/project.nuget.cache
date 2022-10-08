@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "skwkacUBtuwUg1+k64O2nW3UZ/W9jsIFESTor4ZZEf8t0Wn9nVddYUqyuc+TZTNnQrUv3SIiCD7/U6iOgwx48Q==",
+  "success": true,
+  "projectFilePath": "/media/pedro/Arquivos-Ubuntu2/Projetos/C#/Blog-School/Blog-School/Blog-School.csproj",
+  "expectedPackageFiles": [
+    "/home/pedro/.nuget/packages/microsoft.extensions.apidescription.server/3.0.0/microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "/home/pedro/.nuget/packages/microsoft.openapi/1.2.3/microsoft.openapi.1.2.3.nupkg.sha512",
+    "/home/pedro/.nuget/packages/swashbuckle.aspnetcore/6.2.3/swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "/home/pedro/.nuget/packages/swashbuckle.aspnetcore.swagger/6.2.3/swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "/home/pedro/.nuget/packages/swashbuckle.aspnetcore.swaggergen/6.2.3/swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "/home/pedro/.nuget/packages/swashbuckle.aspnetcore.swaggerui/6.2.3/swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
