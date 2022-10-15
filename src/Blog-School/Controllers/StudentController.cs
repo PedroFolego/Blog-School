@@ -1,5 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Auth.Interface;
 namespace Blog_School.Controllers;
 
 [ApiController]
