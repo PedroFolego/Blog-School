@@ -4,7 +4,7 @@ namespace Auth.Interface;
 
 
 
-interface IPostModel
+public interface IPostModel
 {
   public ICollection<Post> Get();
 
