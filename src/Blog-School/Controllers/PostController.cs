@@ -1,10 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Auth.Interface;
 namespace Blog_School.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PostController : ControllerBase
+public class PostController: ControllerBase
 {
 
     private readonly IPostModel _model;
