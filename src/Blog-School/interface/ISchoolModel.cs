@@ -3,7 +3,7 @@ namespace Auth.Interface;
 
 
 
-interface ISchoolModel
+public interface ISchoolModel
 {
   public ICollection<Student> Get();
 
