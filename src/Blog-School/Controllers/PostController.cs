@@ -1,10 +1,11 @@
 using Microsoft.AspNetCore.Mvc;
-
+using Auth.Interface;
+using Auth.Models;
 namespace Blog_School.Controllers;
 
 [ApiController]
 [Route("[controller]")]
-public class PostController : ControllerBase
+public class PostController: ControllerBase
 {
 
     private readonly IPostModel _model;
@@ -17,7 +18,7 @@ public class PostController : ControllerBase
     public IActionResult Get()
     {
         
-        var posts = _model.GetAll();
+        var posts = _model.Get();
         return Ok(posts);
         
     }
@@ -42,8 +43,8 @@ public class PostController : ControllerBase
         var validatePost = _model.GetOne(post.PostId);
         if (validatePost == null) return NotFound();
 
-        var newStudent = _model.Update(post);
-        return Ok(newStudent);
+        _model.Update(post);
+        return Ok();
     }
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
