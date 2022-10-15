@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Auth.Interface;
+using Auth.Models;
 namespace Blog_School.Controllers;
 
 [ApiController]
@@ -17,7 +18,7 @@ public class SchoolController : ControllerBase
     public IActionResult Get()
     {
         
-        var students = _model.GetAll();
+        var students = _model.Get();
         return Ok(students);
         
     }
@@ -39,11 +40,11 @@ public class SchoolController : ControllerBase
     [HttpPut]
     public IActionResult Update(Student student)
     {
-        var validateStudent = _model.GetOne(student.StudentId);
+        var validateStudent = _model.GetOne(student.StundentId);
         if (validateStudent == null) return NotFound();
 
-        var newStudent = _model.Update(student);
-        return Ok(newStudent);
+        _model.Update(student);
+        return Ok();
     }
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
