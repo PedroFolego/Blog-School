@@ -44,7 +44,7 @@ public class SchoolController : ControllerBase
         if (validateStudent == null) return NotFound();
 
         _model.Update(student);
-        return Ok();
+        return NoContent();
     }
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
