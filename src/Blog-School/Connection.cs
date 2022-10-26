@@ -19,4 +19,11 @@ public class Connection : DbContext
             ");
         }
     }
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+      modelBuilder.Entity<Post>()
+        .HasOne(e => e.Student)
+        .WithMany(e => e.Posts)
+        .HasForeignKey(e => e.StudentId);
+    }
 }
