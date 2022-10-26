@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Auth.Models;
+using Auth.Repository;
 
-public class Connection : DbContext
+public class Context : DbContext, IContext
 {
     public DbSet<Post> Posts { get; set; }
     public DbSet<Student> Students { get; set; }
