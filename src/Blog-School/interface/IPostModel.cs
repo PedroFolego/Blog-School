@@ -6,7 +6,7 @@ namespace Auth.Interface;
 
 public interface IPostModel
 {
-  public ICollection<Post> Get();
+  public IEnumerable<Post> Get();
 
   public Post GetOne(int Id);
 
