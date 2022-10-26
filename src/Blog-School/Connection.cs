@@ -13,13 +13,12 @@ public class Connection : DbContext
         {
             optionsBuilder.UseSqlServer(@"
                 Server=127.0.0.1;
-                Database=my_context_db;
+                Database=blog_school;
                 User=SA;
                 Password=Password12!;
             ");
         }
     }
-
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
       modelBuilder.Entity<Post>()
