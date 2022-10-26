@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Auth.Interface;
 using Auth.Models;
+using Auth.Repository;
+
 namespace Blog_School.Controllers;
 
 [ApiController]
@@ -8,51 +10,51 @@ namespace Blog_School.Controllers;
 public class SchoolController : ControllerBase
 {
 
-    private readonly ISchoolModel _model;
-    public SchoolController(ISchoolModel model)
+    private readonly IStudentRepository _repository;
+    public SchoolController(IStudentRepository repository)
     {
-        _model = model;
+        _repository = repository;
     }
 
     [HttpGet]
-    public IActionResult Get()
+    public ActionResult Get()
     {
         
-        var students = _model.Get();
+        var students = _repository.Get();
         return Ok(students);
         
     }
     [HttpGet("{id}")]
-    public IActionResult GetOne(int id)
+    public ActionResult GetOne(int id)
     {
-        var student = _model.GetOne(id);
+        var student = _repository.GetOne(id);
         if (student == null) return NotFound();
         return Ok(student);
     }
 
     [HttpPost]
-    public IActionResult Create(Student student)
+    public ActionResult Create(Student student)
     {    
-        _model.Create(student);
+        _repository.Create(student);
         return Ok(student);
     }
 
     [HttpPut]
-    public IActionResult Update(Student student)
+    public ActionResult Update(Student student)
     {
-        var validateStudent = _model.GetOne(student.StundentId);
+        var validateStudent = _repository.GetOne(student.StudentId);
         if (validateStudent == null) return NotFound();
 
-        _model.Update(student);
+        _repository.Update(student);
         return NoContent();
     }
     [HttpDelete("{id}")]
-    public IActionResult Delete(int id)
+    public ActionResult Delete(int id)
     {
-        var validateStudent = _model.GetOne(id);
+        var validateStudent = _repository.GetOne(id);
         if (validateStudent == null) return NotFound();
 
-        _model.Delete(id);
+        _repository.Delete(id);
         return NoContent();
     }
 }
