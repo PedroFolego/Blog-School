@@ -7,6 +7,7 @@ public class Context : DbContext, IContext
 {
     public DbSet<Post> Posts { get; set; }
     public DbSet<Student> Students { get; set; }
+    public Context(DbContextOptions<Context> options) : base(options) {}
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
