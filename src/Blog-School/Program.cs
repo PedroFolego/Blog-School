@@ -1,4 +1,5 @@
 using Auth.Repository;
+using Auth.Models;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +17,16 @@ builder.Services.AddScoped<IPostRepository, PostRepository>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+
+// var context = new Context();
+// context.Database.EnsureCreated();
+
+// context.Student.Add(new Student{
+//     StudentId = 1,
+//     Name = "Pedro"
+// });
+
+// Console.WriteLine(context.Student.ToList());
 
 var app = builder.Build();
 

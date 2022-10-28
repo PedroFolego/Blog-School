@@ -18,7 +18,6 @@ public class PostController: ControllerBase
     [HttpGet]
     public IActionResult Get()
     {
-        
         var posts = _repository.Get();
         return Ok(posts);
         

@@ -8,7 +8,7 @@ public class Context : DbContext, IContext
     public DbSet<Post> Posts { get; set; }
     public DbSet<Student> Students { get; set; }
     public Context(DbContextOptions<Context> options) : base(options) {}
-
+    public Context() {}
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -17,7 +17,7 @@ public class Context : DbContext, IContext
                 Server=127.0.0.1;
                 Database=blog_school;
                 User=SA;
-                Password=Password12!;
+                Password=Password12;
             ");
         }
     }
