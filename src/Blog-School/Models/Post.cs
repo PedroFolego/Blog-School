@@ -7,6 +7,6 @@ public class Post
     public string? Title { get; set; } 
     public string Content { get; set; }
     public int  StudentId { get; set; }
-    public Student? Student { get; set; }
+    public Student? Students { get; set; }
     
 };

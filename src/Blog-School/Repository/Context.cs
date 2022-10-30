@@ -8,6 +8,10 @@ public class Context : DbContext, IContext
     public DbSet<Post> Posts { get; set; }
     public DbSet<Student> Students { get; set; }
 
+    public Context(DbContextOptions<Context> options) : base(options) {}
+
+  
+
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
         if (!optionsBuilder.IsConfigured)
@@ -22,8 +26,10 @@ public class Context : DbContext, IContext
     }
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-      modelBuilder.Entity<Post>()
-        .HasOne(e => e.Student)
+
+
+       modelBuilder.Entity<Post>()
+        .HasOne(e => e.Students)
         .WithMany(e => e.Posts)
         .HasForeignKey(e => e.StudentId);
     }
