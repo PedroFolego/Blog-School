@@ -1,4 +1,5 @@
 using Auth.Models;
+using Microsoft.AspNetCore.Mvc;
 namespace Auth.Interface;
 
 
@@ -9,11 +10,11 @@ public interface ISchoolModel
 
   public Student GetOne(int Id);
 
-  public void Create(Student student);
+  public ActionResult Create(Student student);
 
-  public void Update(Student student);
+  public ActionResult Update(Student student);
 
-  public void Delete(int Id);
+  public ActionResult Delete(int Id);
 
 
 } 

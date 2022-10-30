@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Auth.Interface;
 using Auth.Models;
+using Auth.Repository;
 namespace Blog_School.Controllers;
 
 [ApiController]
@@ -8,24 +9,24 @@ namespace Blog_School.Controllers;
 public class PostController: ControllerBase
 {
 
-    private readonly IPostModel _model;
-    public PostController(IPostModel model)
+    private readonly IPostRepository _repository;
+    public PostController(IPostRepository repository)
     {
-        _model = model;
+        _repository = repository;
     }
 
     [HttpGet]
     public IActionResult Get()
     {
         
-        var posts = _model.Get();
+        var posts = _repository.Get();
         return Ok(posts);
         
     }
     [HttpGet("{id}")]
     public IActionResult GetOne(int id)
     {
-        var post = _model.GetOne(id);
+        var post = _repository.GetOne(id);
         if (post == null) return NotFound();
         return Ok(post);
     }
@@ -33,26 +34,26 @@ public class PostController: ControllerBase
     [HttpPost]
     public IActionResult Create(Post post)
     {    
-        _model.Create(post);
+        _repository.Create(post);
         return Ok(post);
     }
 
     [HttpPut]
     public IActionResult Update(Post post)
     {
-        var validatePost = _model.GetOne(post.PostId);
+        var validatePost = _repository.GetOne(post.PostId);
         if (validatePost == null) return NotFound();
 
-        _model.Update(post);
+        _repository.Update(post);
         return Ok();
     }
     [HttpDelete("{id}")]
     public IActionResult Delete(int id)
     {
-        var validatePost = _model.GetOne(id);
+        var validatePost = _repository.GetOne(id);
         if (validatePost == null) return NotFound();
 
-        _model.Delete(id);
+        _repository.Delete(id);
         return NoContent();
     }
 }

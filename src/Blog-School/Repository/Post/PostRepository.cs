@@ -34,7 +34,7 @@ public class PostRepository : IPostRepository
       selectPost.Title = post.Title;
       selectPost.Content = post.Content;
       selectPost.StudentId = post.StudentId;
-      selectPost.Student = post.Student;
+      selectPost.Students = post.Students;
       _context.SaveChanges();
     }
 
