@@ -2,13 +2,13 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Blog.Models
 {
-    public class TryitterContext : DbContext
+    public class BlogContext : DbContext
     {
-        public virtual DbSet<Student> Users { get; set; }
-        public virtual DbSet<Post> Posts { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Post> Posts { get; set; }
 
-        public TryitterContext(DbContextOptions<TryitterContext> options) : base(options) { }
-        public TryitterContext() { }
+        public BlogContext(DbContextOptions<BlogContext> options) : base(options) { }
+        public BlogContext() { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
