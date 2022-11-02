@@ -27,6 +27,8 @@ public class StudentRepository : IStudent
     public void Create(Student student)
     {
       _context.Students.Add(student);
+      _context.SaveChanges();
+      
     }
 
     public void Update(Student student)

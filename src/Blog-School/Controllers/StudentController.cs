@@ -32,6 +32,7 @@ public class StudentController : ControllerBase
     [HttpPost]
     public ActionResult Create(Student student)
     {    
+        Console.WriteLine(student);
         _repository.Create(student);
         return Ok(student);
     }
