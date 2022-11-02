@@ -1,8 +1,9 @@
 using Microsoft.EntityFrameworkCore;
+using Blog.Interfaces;
 
 namespace Blog.Models
 {
-    public class BlogContext : DbContext
+    public class BlogContext : DbContext, IBlogContext
     {
         public DbSet<Student> Students { get; set; }
         public DbSet<Post> Posts { get; set; }
@@ -23,6 +24,13 @@ namespace Blog.Models
 
                 optionsBuilder.UseSqlServer(connectionString);
             }
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Post>()
+                .HasOne(e => e.Student)
+                .WithMany(e => e.Posts)
+                .HasForeignKey(e => e.StudentId);
         }
     }
 }
