@@ -10,7 +10,7 @@ public interface IStudent
 
     void Create(Student student);
 
-    void Update(Student student);
+    void Update(Student student, int id);
 
     void Delete(int Id);
 }

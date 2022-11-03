@@ -31,10 +31,11 @@ public class StudentRepository : IStudent
       
     }
 
-    public void Update(Student student)
+    public void Update(Student student, int id)
     {
-      var selectStudent =_context.Students.SingleOrDefault(p => p.StudentId == student.StudentId);
-      selectStudent.Email = student.Name;
+      var selectStudent =_context.Students.SingleOrDefault(p => p.StudentId == id);
+      selectStudent.Email = student.Email;
+      selectStudent.Username = student.Username;
       selectStudent.Password = student.Password;
       selectStudent.Name = student.Name;
       _context.SaveChanges();
@@ -45,5 +46,7 @@ public class StudentRepository : IStudent
       var selectStudent =_context.Students.SingleOrDefault(p => p.StudentId == Id);
 
       _context.Students.Remove(selectStudent);
+      _context.SaveChanges();
+
     }
 }

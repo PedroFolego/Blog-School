@@ -37,13 +37,13 @@ public class StudentController : ControllerBase
         return Ok(student);
     }
 
-    [HttpPut]
-    public ActionResult Update(Student student)
+    [HttpPut("{id}")]
+    public ActionResult Update(int id, Student student)
     {
-        var validateStudent = _repository.GetOne(student.StudentId);
+        var validateStudent = _repository.GetOne(id);
         if (validateStudent == null) return NotFound();
 
-        _repository.Update(student);
+        _repository.Update(student, id);
         return NoContent();
     }
     [HttpDelete("{id}")]
