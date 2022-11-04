@@ -10,7 +10,7 @@ public interface IPost
 
     void Create(Post post);
 
-    void Update(Post post);
+    void Update(Post post, int id);
 
     void Delete(int Id);
 }

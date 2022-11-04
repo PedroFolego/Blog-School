@@ -36,13 +36,13 @@ public class PostController : ControllerBase
         return Ok(post);
     }
 
-    [HttpPut]
-    public IActionResult Update(Post post)
+    [HttpPut("{id}")]
+    public IActionResult Update(int id, Post post)
     {
         var validatePost = _repository.GetOne(post.PostId);
         if (validatePost == null) return NotFound();
 
-        _repository.Update(post);
+        _repository.Update(post, id);
         return Ok();
     }
     [HttpDelete("{id}")]

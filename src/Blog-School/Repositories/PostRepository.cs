@@ -27,11 +27,12 @@ public class PostRepository : IPost
     public void Create(Post post)
     {
       _context.Posts.Add(post);
+      _context.SaveChanges();
     }
 
-    public void Update(Post post)
+    public void Update(Post post, int id)
     {
-      var selectPost =_context.Posts.SingleOrDefault(p => p.PostId == post.PostId);
+      var selectPost =_context.Posts.SingleOrDefault(p => p.PostId == id);
       selectPost.Content = post.Content;
       _context.SaveChanges();
     }
@@ -41,5 +42,6 @@ public class PostRepository : IPost
       var selectPost =_context.Posts.SingleOrDefault(p => p.PostId == Id);
 
       _context.Posts.Remove(selectPost);
+      _context.SaveChanges();
     }
 }
