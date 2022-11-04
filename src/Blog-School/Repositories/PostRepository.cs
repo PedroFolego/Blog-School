@@ -33,6 +33,7 @@ public class PostRepository : IPost
     public void Update(Post post, int id)
     {
       var selectPost =_context.Posts.SingleOrDefault(p => p.PostId == id);
+      selectPost.ImageUrl = post.ImageUrl;
       selectPost.Content = post.Content;
       _context.SaveChanges();
     }
