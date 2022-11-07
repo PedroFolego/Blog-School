@@ -24,9 +24,16 @@ public class PostRepository : IPost
       return post;
     }
 
-    public void Create(Post post)
+    public void Create(int id, Post post)
     {
-      _context.Posts.Add(post);
+      var newPost = new Post()
+      {
+        StudentId = id,
+        Content = post.Content,
+        ImageUrl = post.ImageUrl,
+      };
+
+      _context.Posts.Add(newPost);
       _context.SaveChanges();
     }
 

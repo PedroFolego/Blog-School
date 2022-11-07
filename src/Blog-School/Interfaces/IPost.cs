@@ -8,7 +8,7 @@ public interface IPost
 
     Post? GetOne(int Id);
 
-    void Create(Post post);
+    void Create(int id, Post post);
 
     void Update(Post post, int id);
 
