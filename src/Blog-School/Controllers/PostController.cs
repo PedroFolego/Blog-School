@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Blog.Models;
 using Blog.Interfaces;
+using Microsoft.AspNetCore.Authorization;
+using System.IdentityModel.Tokens.Jwt;
 namespace Blog.Controllers;
 
 [ApiController]
@@ -30,8 +32,13 @@ public class PostController : ControllerBase
     }
 
     [HttpPost]
+    [Authorize]
     public IActionResult Create(Post post)
     {    
+        // var token = Request.Headers["token"];
+        // var handler = new JwtSecurityTokenHandler();
+        // var jwtSecurityToken = handler.ReadJwtToken(token);
+
         _repository.Create(post);
         return Ok(post);
     }

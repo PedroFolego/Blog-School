@@ -48,7 +48,7 @@ public class StudentController : ControllerBase
     if (HttpContext.User.HasClaim("Id", id.ToString()))
     {
       _repository.Update(student, id);
-      return NoContent();
+      return Ok(student);
     }
     return Unauthorized();
   }
@@ -64,6 +64,8 @@ public class StudentController : ControllerBase
     }
     return Unauthorized();
   }
+
+  // LOGIN 
   [HttpPost]
   [Route("/login")]
   public ActionResult Login(StudentLogin user)
