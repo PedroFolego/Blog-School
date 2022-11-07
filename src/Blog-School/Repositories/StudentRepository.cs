@@ -24,11 +24,12 @@ public class StudentRepository : IStudent
       return Student;
     }
 
-    public void Create(Student student)
+    public Student Create(Student student)
     {
-      _context.Students.Add(student);
+      var studentCreated = _context.Students.Add(student);
+      Console.WriteLine(studentCreated);
       _context.SaveChanges();
-      
+      return student;
     }
 
     public void Update(Student student, int id)
@@ -48,5 +49,10 @@ public class StudentRepository : IStudent
       _context.Students.Remove(selectStudent);
       _context.SaveChanges();
 
+    }
+    public Student? GetByEmail(string email) 
+    {
+      var student =_context.Students.FirstOrDefault(p => p.Email == email);
+      return student;
     }
 }

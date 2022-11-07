@@ -7,8 +7,9 @@ public interface IStudent
     IEnumerable<Student> Get();
 
     Student? GetOne(int Id);
+    Student? GetByEmail(string email);
 
-    void Create(Student student);
+    Student Create(Student student);
 
     void Update(Student student, int id);
 

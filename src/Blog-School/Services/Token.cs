@@ -1,5 +1,3 @@
-
-
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Text;
@@ -15,13 +13,13 @@ public class Token
   {
     var tokenHandler = new JwtSecurityTokenHandler();
 
-    var credentials = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII
+    var access = new SigningCredentials(new SymmetricSecurityKey(Encoding.ASCII
       .GetBytes(SecretToken.secret)), SecurityAlgorithms.HmacSha256Signature);
 
     var tokenDescriptor = new SecurityTokenDescriptor()
     {
       Subject = AddClaims(user),
-      SigningCredentials = credentials,
+      SigningCredentials = access,
       Expires = DateTime.Now.AddDays(7)
     };
 
