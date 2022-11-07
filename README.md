@@ -12,12 +12,19 @@ A Trybe decidiu desenvolver sua própria rede social, totalmente baseada em text
 
 
 ### Executando aplicação
+ 
 
-* Rode o banco de dados com o docker:
+* Rode o banco de dados com o docker (opcional):
 
  ```
  docker-compose up --build -d
  ```
+ 
+* Adicione uma Connection String (exemplo):
+
+```
+export DOTNET_CONNECTION_STRING="Server=127.0.0.1;Database=blog_school;User=SA;Password=Password12@"
+```
 
 * Baixe as dependências do projeto:
 
