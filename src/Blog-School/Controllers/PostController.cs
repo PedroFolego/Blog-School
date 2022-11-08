@@ -37,7 +37,8 @@ public class PostController : ControllerBase
     [Authorize]
     public IActionResult Create(Post post)
     {    
-        var  newPost = _repository.Create(post);
+        if (post.Content == null) return BadRequest();
+        var newPost = _repository.Create(post);
         return Ok(newPost);
     }
 
