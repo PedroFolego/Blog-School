@@ -45,24 +45,17 @@ public class StudentController : ControllerBase
   [Authorize]
   public ActionResult Update(int id, Student student)
   {
-    if (HttpContext.User.HasClaim("Id", id.ToString()))
-    {
-      _repository.Update(student, id);
-      return Ok(student);
-    }
-    return Unauthorized();
+
+    _repository.Update(student, id);
+    return Ok(student);
+
   }
   [HttpDelete("{id}")]
   [Authorize]
   public ActionResult Delete(int id)
   {
-
-    if (HttpContext.User.HasClaim("Id", id.ToString()))
-    {
-      _repository.Delete(id);
-      return NoContent();
-    }
-    return Unauthorized();
+    _repository.Delete(id);
+    return NoContent();
   }
 
   // LOGIN 
@@ -74,7 +67,7 @@ public class StudentController : ControllerBase
 
     if (student == null || student.Password != user.Password)
     {
-      return BadRequest(new { message = "Invalid fields" });
+      return BadRequest(new { message = "Email or password invalid" });
     }
     var token = Token.Generate(student);
 

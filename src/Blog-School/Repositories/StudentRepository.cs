@@ -26,8 +26,7 @@ public class StudentRepository : IStudent
 
     public Student Create(Student student)
     {
-      var studentCreated = _context.Students.Add(student);
-      Console.WriteLine(studentCreated);
+      _context.Students.Add(student);
       _context.SaveChanges();
       return student;
     }

@@ -37,8 +37,8 @@ public class PostController : ControllerBase
     [Authorize]
     public IActionResult Create(Post post)
     {    
-        _repository.Create(post);
-        return Ok(post);
+        var  newPost = _repository.Create(post);
+        return Ok(newPost);
     }
 
     [HttpPut("{id}")]
