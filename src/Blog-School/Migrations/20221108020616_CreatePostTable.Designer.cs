@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Blog_School.Migrations
 {
     [DbContext(typeof(BlogContext))]
-    [Migration("20221103191132_ChangeNamePostStudent")]
-    partial class ChangeNamePostStudent
+    [Migration("20221108020616_CreatePostTable")]
+    partial class CreatePostTable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -74,13 +74,11 @@ namespace Blog_School.Migrations
 
             modelBuilder.Entity("Blog.Models.Post", b =>
                 {
-                    b.HasOne("Blog.Models.Student", "Student")
+                    b.HasOne("Blog.Models.Student", null)
                         .WithMany("Posts")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Blog.Models.Student", b =>

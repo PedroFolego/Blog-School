@@ -4,7 +4,7 @@
 
 namespace Blog_School.Migrations
 {
-    public partial class ChangeNamePostStudent : Migration
+    public partial class CreatePostTable : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

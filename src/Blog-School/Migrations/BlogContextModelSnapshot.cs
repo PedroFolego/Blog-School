@@ -72,13 +72,11 @@ namespace Blog_School.Migrations
 
             modelBuilder.Entity("Blog.Models.Post", b =>
                 {
-                    b.HasOne("Blog.Models.Student", "Student")
+                    b.HasOne("Blog.Models.Student", null)
                         .WithMany("Posts")
                         .HasForeignKey("StudentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-
-                    b.Navigation("Student");
                 });
 
             modelBuilder.Entity("Blog.Models.Student", b =>
