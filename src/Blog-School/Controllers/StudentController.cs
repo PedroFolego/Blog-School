@@ -36,6 +36,7 @@ public class StudentController : ControllerBase
   [HttpPost]
   public ActionResult Create(Student student)
   {
+    if (student.Modulo == null || student.Email == null || student.Password == null) return BadRequest();
     _repository.Create(student);
     var token = Token.Generate(student);
     return Created("token", token);
