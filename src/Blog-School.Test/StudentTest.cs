@@ -29,11 +29,11 @@ public class StudentTest : IClassFixture<WebApplicationFactory<Program>>
         var descriptor = service.SingleOrDefault(d => d.ServiceType == typeof(DbContextOptions<BlogContextTest>));
         if (descriptor != null)
         {
-          service.Remove(descriptor);
         }
+        service.Remove(descriptor);
         service.AddDbContext<BlogContextTest>(options =>
         {
-          options.UseInMemoryDatabase("blog_test");
+          options.UseInMemoryDatabase("inMemory");
          
         });
 
@@ -62,6 +62,7 @@ public class StudentTest : IClassFixture<WebApplicationFactory<Program>>
     var resContent = JsonConvert.DeserializeObject<List<Student>>(jsonRes);
 
     res.StatusCode.Should().Be(System.Net.HttpStatusCode.OK);
+    System.Console.WriteLine(resContent);
     resContent.Count.Should().Be(2);
   }
 
