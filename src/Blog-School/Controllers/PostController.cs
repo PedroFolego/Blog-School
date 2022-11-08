@@ -2,7 +2,7 @@ using Microsoft.AspNetCore.Mvc;
 using Blog.Models;
 using Blog.Interfaces;
 using Microsoft.AspNetCore.Authorization;
-using System.IdentityModel.Tokens.Jwt;
+// using System.IdentityModel.Tokens.Jwt;
 namespace Blog.Controllers;
 
 [ApiController]
@@ -16,6 +16,7 @@ public class PostController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Get()
     {
         
@@ -24,6 +25,7 @@ public class PostController : ControllerBase
         
     }
     [HttpGet("{id}")]
+    [Authorize]
     public IActionResult GetOne(int id)
     {
         var post = _repository.GetOne(id);
@@ -35,24 +37,22 @@ public class PostController : ControllerBase
     [Authorize]
     public IActionResult Create(Post post)
     {    
-        // var token = Request.Headers["token"];
-        // var handler = new JwtSecurityTokenHandler();
-        // var jwtSecurityToken = handler.ReadJwtToken(token);
-
         _repository.Create(post);
         return Ok(post);
     }
 
     [HttpPut("{id}")]
+    [Authorize]
     public IActionResult Update(int id, Post post)
     {
-        var validatePost = _repository.GetOne(post.PostId);
+        var validatePost = _repository.GetOne(id);
         if (validatePost == null) return NotFound();
 
         _repository.Update(post, id);
         return Ok();
     }
     [HttpDelete("{id}")]
+    [Authorize]
     public IActionResult Delete(int id)
     {
         var validatePost = _repository.GetOne(id);

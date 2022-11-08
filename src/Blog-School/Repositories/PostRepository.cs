@@ -26,7 +26,14 @@ public class PostRepository : IPost
 
     public void Create(Post post)
     {
-      _context.Posts.Add(post);
+      var newPost = new Post()
+      {
+        StudentId = post.StudentId,
+        Content = post.Content,
+        ImageUrl = post.ImageUrl,
+      };
+
+      _context.Posts.Add(newPost);
       _context.SaveChanges();
     }
 

@@ -25,12 +25,12 @@ namespace Blog.Models
                 optionsBuilder.UseSqlServer(connectionString);
             }
         }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Post>()
-                .HasOne(e => e.Student)
-                .WithMany(e => e.Posts)
-                .HasForeignKey(e => e.StudentId);
-        }
+        // protected override void OnModelCreating(ModelBuilder modelBuilder)
+        // {
+        //     modelBuilder.Entity<Post>()
+        //         .HasOne(e => e.StudentId)
+        //         .WithMany(e => e.Posts)
+        //         .HasForeignKey(e => e.StudentId);
+        // }
     }
 }

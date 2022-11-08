@@ -65,3 +65,5 @@ var context = new BlogContext();
 context.Database.EnsureCreated();
 
 app.Run();
+
+public partial class Program { }
