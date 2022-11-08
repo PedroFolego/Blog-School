@@ -16,6 +16,7 @@ public class PostController : ControllerBase
     }
 
     [HttpGet]
+    [Authorize]
     public IActionResult Get()
     {
         
@@ -24,6 +25,7 @@ public class PostController : ControllerBase
         
     }
     [HttpGet("{id}")]
+    [Authorize]
     public IActionResult GetOne(int id)
     {
         var post = _repository.GetOne(id);
@@ -31,11 +33,11 @@ public class PostController : ControllerBase
         return Ok(post);
     }
 
-    [HttpPost("{id}")]
+    [HttpPost]
     [Authorize]
-    public IActionResult Create(int id, Post post)
+    public IActionResult Create(Post post)
     {    
-        _repository.Create(id, post);
+        _repository.Create(post);
         return Ok(post);
     }
 

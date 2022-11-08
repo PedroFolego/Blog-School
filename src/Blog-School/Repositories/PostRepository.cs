@@ -24,11 +24,11 @@ public class PostRepository : IPost
       return post;
     }
 
-    public void Create(int id, Post post)
+    public void Create(Post post)
     {
       var newPost = new Post()
       {
-        StudentId = id,
+        StudentId = post.StudentId,
         Content = post.Content,
         ImageUrl = post.ImageUrl,
       };
