@@ -33,7 +33,8 @@ public class StudentTest : IClassFixture<WebApplicationFactory<Program>>
         }
         service.AddDbContext<BlogContextTest>(options =>
         {
-          options.UseInMemoryDatabase("InMemory");
+          options.UseInMemoryDatabase("blog_test");
+         
         });
 
         service.AddScoped<IBlogContext, BlogContextTest>();
