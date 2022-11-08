@@ -53,5 +53,5 @@ jobs:
         with:
           app-name: 'Tryitter'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_B374EF377A194F55B5D51207507B43E5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_E6688B0B54514DC29401D4312268812D }}
           package: .
