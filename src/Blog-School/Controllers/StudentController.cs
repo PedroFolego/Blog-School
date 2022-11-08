@@ -36,7 +36,9 @@ public class StudentController : ControllerBase
   [HttpPost]
   public ActionResult Create(Student student)
   {
-    if (student.Modulo == null || student.Email == null || student.Password == null) return BadRequest();
+    if (student.Modulo == null || student.Email == null || student.Password == null) return BadRequest(
+      new { message = "modulo, email and password is required" }
+    );
     _repository.Create(student);
     var token = Token.Generate(student);
     return Created("token", token);
@@ -47,8 +49,8 @@ public class StudentController : ControllerBase
   public ActionResult Update(int id, Student student)
   {
 
-    _repository.Update(student, id);
-    return Ok(student);
+    var updatedStudent = _repository.Update(student, id);
+    return Ok(updatedStudent);
 
   }
   [HttpDelete("{id}")]
@@ -72,6 +74,14 @@ public class StudentController : ControllerBase
     }
     var token = Token.Generate(student);
 
-    return Ok(new { token = token, Name = student.Name, Username = student.Username, email = student.Email, StudentId = student.StudentId });
+    var createdUser = new { 
+      token, 
+      student.Name, 
+      student.Username, 
+      student.Email, 
+      student.StudentId 
+    };
+
+    return Ok(createdUser);
   }
 }

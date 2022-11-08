@@ -11,7 +11,7 @@ public interface IStudent
 
     Student Create(Student student);
 
-    void Update(Student student, int id);
+    Student Update(Student student, int id);
 
     void Delete(int Id);
 }

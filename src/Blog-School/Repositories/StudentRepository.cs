@@ -31,14 +31,16 @@ public class StudentRepository : IStudent
       return student;
     }
 
-    public void Update(Student student, int id)
+    public Student Update(Student student, int id)
     {
       var selectStudent =_context.Students.SingleOrDefault(p => p.StudentId == id);
       selectStudent.Email = student.Email;
       selectStudent.Username = student.Username;
       selectStudent.Password = student.Password;
+      selectStudent.Modulo = student.Modulo;
       selectStudent.Name = student.Name;
       _context.SaveChanges();
+      return selectStudent;
     }
 
     public void Delete(int Id)
